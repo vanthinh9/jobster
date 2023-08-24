@@ -72,7 +72,7 @@ const AddJob = () => {
                     {/* status */}
                     <FormRowSelect name="status" value={status} handleChange={handleJobInput} list={statusOptions} />
                     <FormRowSelect
-                        name="jobtype"
+                        name="jobType"
                         labelText="job type"
                         value={jobType}
                         handleChange={handleJobInput}
