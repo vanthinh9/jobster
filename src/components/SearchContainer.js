@@ -18,13 +18,12 @@ const SearchContainer = () => {
     };
 
     const debounce = () => {
-        console.log('debounce called');
         let timeoutID;
         return (e) => {
             setLocalSearch(e.target.value);
             clearTimeout(timeoutID);
             timeoutID = setTimeout(() => {
-                dispatch(handleChange({ name: e.target.value, value: e.target.value }));
+                dispatch(handleChange({ name: e.target.name, value: e.target.value }));
             }, 1000);
         };
     };
@@ -40,13 +39,13 @@ const SearchContainer = () => {
                 <h4>search form</h4>
                 <div className="form-center">
                     {/* search position */}
-                    <FormRow type="text" name="search" value={search} handleChange={handleSearch} />{' '}
+                    <FormRow type="text" name="search" value={localSearch} handleChange={optimizedDebounce} />{' '}
                     {/* search by status */}
                     <FormRowSelect
                         labelText="status"
                         name="searchStatus"
-                        value={localSearch}
-                        handleChange={optimizedDebounce}
+                        value={searchStatus}
+                        handleChange={handleSearch}
                         list={['all', ...statusOptions]}
                     />
                     {/* search by type */}
